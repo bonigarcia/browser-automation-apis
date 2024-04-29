@@ -1,0 +1,36 @@
+name: Puppeteer
+
+on:
+  push:
+    branches: [ main ]
+    paths: ['puppeteer/**']
+  pull_request:
+    branches: [ main ]
+    paths: ['puppeteer/**']
+  workflow_dispatch:
+
+jobs:
+  tests:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+    - name: Install dependencies
+      run: |
+        cd puppeteer
+        npm install puppeteer
+    - name: Run Puppeteer tests
+      run: |
+        cd puppeteer
+        node helloword-puppeteer.js
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: screenshots
+        path: puppeteer/*.png
+        retention-days: 30
