@@ -13,7 +13,7 @@ env:
   DISPLAY: :99
 
 jobs:
-  build:
+  tests:
     strategy:
       matrix:
         os: [ ubuntu-latest ]

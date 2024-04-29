@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test('basic test', async ({ page }) => {
+test('Hello World Playwright', async ({ page }) => {
    await page.goto('https://bonigarcia.dev/selenium-webdriver-java/login-form.html');
   
    await page.fill('#username', 'user');
