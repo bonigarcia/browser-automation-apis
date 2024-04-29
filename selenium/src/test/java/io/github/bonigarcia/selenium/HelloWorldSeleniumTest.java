@@ -44,7 +44,8 @@ class HelloWorldSeleniumTest {
 
     @Test
     void test() throws Exception {
-        driver.get("https://bonigarcia.dev/selenium-webdriver-java/login-form.html");
+        driver.get(
+                "https://bonigarcia.dev/selenium-webdriver-java/login-form.html");
 
         // Log in
         driver.findElement(By.id("username")).sendKeys("user");

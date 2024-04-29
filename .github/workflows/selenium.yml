@@ -2,10 +2,10 @@ name: Selenium
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths: ['selenium/**']
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
     paths: ['selenium/**']
   workflow_dispatch:
 
