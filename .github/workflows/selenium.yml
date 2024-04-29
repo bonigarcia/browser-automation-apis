@@ -32,6 +32,6 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       run: Xvfb $DISPLAY &
     - name: Run tests
-      run: >
+      run: |
         cd selenium
         run: mvn -B test
