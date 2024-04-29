@@ -128,3 +128,16 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# other
+*~
+target
+.classpath
+.project
+.settings
+/.idea
+*.iml
+*.pem
+*.mp4
+.DS_Store
+*.png
