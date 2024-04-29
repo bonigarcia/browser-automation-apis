@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest ]
-        java: [ 11 ]
+        java: [ 17 ]
     runs-on: ${{ matrix.os }}
     steps:
     - name: Checkout GitHub repo
