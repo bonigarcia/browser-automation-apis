@@ -9,6 +9,9 @@ on:
     paths: ['puppeteer/**']
   workflow_dispatch:
 
+env:
+  DISPLAY: :99
+
 jobs:
   tests:
     strategy:
@@ -20,6 +23,9 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+    - name: Start Xvfb
+      if: matrix.os == 'ubuntu-latest'
+      run: Xvfb $DISPLAY &
     - name: Install dependencies
       run: |
         cd puppeteer
