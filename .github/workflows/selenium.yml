@@ -1,4 +1,4 @@
-name: selenium
+name: Selenium
 
 on:
   push:
@@ -32,4 +32,6 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       run: Xvfb $DISPLAY &
     - name: Run tests
-      run: mvn -B test
+      run: >
+        cd selenium
+        run: mvn -B test
