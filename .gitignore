@@ -141,3 +141,4 @@ target
 *.mp4
 .DS_Store
 *.png
+playwright-report
