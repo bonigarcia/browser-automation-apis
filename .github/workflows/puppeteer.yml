@@ -26,13 +26,10 @@ jobs:
     - name: Start Xvfb
       if: matrix.os == 'ubuntu-latest'
       run: Xvfb $DISPLAY &
-    - name: Install dependencies
+    - name: Install dependencies and run Puppeteer test
       run: |
         cd puppeteer
         npm install puppeteer
-    - name: Run Puppeteer tests
-      run: |
-        cd puppeteer
         node helloword-puppeteer.js
     - uses: actions/upload-artifact@v4
       if: always()
