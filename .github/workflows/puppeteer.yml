@@ -29,8 +29,8 @@ jobs:
     - name: Install dependencies and run Puppeteer test
       run: |
         cd puppeteer
-        npm install puppeteer
-        node helloword-puppeteer.js
+        npm install
+        npm test
     - uses: actions/upload-artifact@v4
       if: always()
       with:

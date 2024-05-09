@@ -1,0 +1,13 @@
+{
+    "name": "puppeteer_jest_hello_world",
+    "version": "1.0.0",
+    "scripts": {
+        "test": "jest" 
+    },
+    "license": "Apache-2.0",
+    "devDependencies": {
+        "jest": "^29.7.0",
+        "jest-puppeteer": "^10.0.1",
+        "puppeteer": "^22.8.0"
+    }
+  }
