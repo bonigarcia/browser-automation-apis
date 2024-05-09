@@ -1,0 +1,29 @@
+name: Cypress
+
+on:
+  push:
+    branches: [ main ]
+    paths: ['cypress/**']
+  pull_request:
+    branches: [ main ]
+    paths: ['cypress/**']
+  workflow_dispatch:
+
+jobs:
+  tests:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v4   
+    - uses: cypress-io/github-action@v3
+      with:
+        project: ./cypress
+        browser: chrome
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: screenshots
+        path: cypress/*.png
+        retention-days: 30

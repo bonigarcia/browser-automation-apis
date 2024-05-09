@@ -1,4 +1,5 @@
 [![Build Status](https://github.com/bonigarcia/browser-automation-apis/actions/workflows/selenium.yml/badge.svg)](https://github.com/bonigarcia/browser-automation-apis/actions/workflows/selenium.yml)
+[![Build Status](https://github.com/bonigarcia/browser-automation-apis/actions/workflows/cypress.yml/badge.svg)](https://github.com/bonigarcia/browser-automation-apis/actions/workflows/cypress.yml)
 [![Build Status](https://github.com/bonigarcia/browser-automation-apis/actions/workflows/puppeteer.yml/badge.svg)](https://github.com/bonigarcia/browser-automation-apis/actions/workflows/puppeteer.yml)
 [![Build Status](https://github.com/bonigarcia/browser-automation-apis/actions/workflows/playwright.yml/badge.svg)](https://github.com/bonigarcia/browser-automation-apis/actions/workflows/playwright.yml)
 [![License badge](https://img.shields.io/badge/license-Apache2-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
