@@ -25,5 +25,5 @@ jobs:
       if: always()
       with:
         name: cypress-screenshots
-        path: cypress/screenshots/**/*.png
+        path: cypress/cypress/screenshots/**/*.png
         retention-days: 30
