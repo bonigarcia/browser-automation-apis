@@ -13,5 +13,5 @@ describe('Hello World with Cypress', () => {
 	  
       // Take screenshot
       cy.screenshot("helloworld-cypress");
-  })
-})
+  });
+});
