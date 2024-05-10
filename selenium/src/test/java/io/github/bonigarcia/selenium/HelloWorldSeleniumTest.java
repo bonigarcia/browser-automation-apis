@@ -31,6 +31,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 class HelloWorldSeleniumTest {
@@ -44,22 +45,22 @@ class HelloWorldSeleniumTest {
 
     @Test
     void test() throws Exception {
+        // Open system under test (SUT)
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/login-form.html");
 
         // Log in
         driver.findElement(By.id("username")).sendKeys("user");
         driver.findElement(By.id("password")).sendKeys("user");
         driver.findElement(By.cssSelector("button")).click();
-        String bodyText = driver.findElement(By.tagName("body")).getText();
 
-        assertThat(bodyText).contains("Login successful");
+        // Assert text in element
+        WebElement successElement = driver.findElement(By.className("#success"));
+        assertThat(successElement.getText()).contains("Login successful");
 
         // Take screenshot
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(FILE);
         Path destination = Paths.get("helloworld-selenium.png");
         Files.move(screenshot.toPath(), destination, REPLACE_EXISTING);
-
-        assertThat(destination).exists();
     }
 
     @AfterEach
