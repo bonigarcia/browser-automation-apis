@@ -56,7 +56,7 @@ class HelloWorldSeleniumTest {
 
         // Take screenshot
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(FILE);
-        Path destination = Paths.get("hello-world-selenium.png");
+        Path destination = Paths.get("helloworld-selenium.png");
         Files.move(screenshot.toPath(), destination, REPLACE_EXISTING);
 
         assertThat(destination).exists();
