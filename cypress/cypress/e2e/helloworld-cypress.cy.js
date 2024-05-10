@@ -1,12 +1,17 @@
 describe('Hello World with Cypress', () => {
-   it('Login in the practice site', () => {
-      cy.visit('https://bonigarcia.dev/selenium-webdriver-java/login-form.html')
+   it('Login in practice site', () => {
+      // Open system under test (SUT)
+      cy.visit('https://bonigarcia.dev/selenium-webdriver-java/login-form.html');
 	
-      cy.get('#username').type('user')
-      cy.get('#password').type('user')
-      cy.contains('Submit').click()
-      cy.contains('Login successful')
+      // Log in
+      cy.get('#username').type('user');
+      cy.get('#password').type('user');
+      cy.contains('Submit').click();
+
+      // Assert text
+      cy.contains('Login successful');
 	  
-      cy.screenshot("helloworld-cypress")
+      // Take screenshot
+      cy.screenshot("helloworld-cypress");
   })
 })

@@ -53,8 +53,8 @@ class HelloWorldSeleniumTest {
         driver.findElement(By.id("password")).sendKeys("user");
         driver.findElement(By.cssSelector("button")).click();
 
-        // Assert text in element
-        WebElement successElement = driver.findElement(By.className("#success"));
+        // Assert text
+        WebElement successElement = driver.findElement(By.id("success"));
         assertThat(successElement.getText()).contains("Login successful");
 
         // Take screenshot
