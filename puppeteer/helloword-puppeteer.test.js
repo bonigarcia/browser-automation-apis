@@ -8,8 +8,10 @@ describe('Hello World with Puppeteer', () => {
       await page.type('#password', 'user');
       await page.click('button[type="submit"]');
 
-      // Assert text
+      // Get success element
       const successElement = await page.$('#success');
+
+      // Assert expected text
       const successElementText = await page.evaluate(successElement => successElement.textContent, successElement);
       expect(successElementText).toContain('Login successful')
 

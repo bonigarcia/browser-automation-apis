@@ -24,6 +24,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Duration;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,6 +34,8 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 class HelloWorldSeleniumTest {
 
@@ -51,14 +54,17 @@ class HelloWorldSeleniumTest {
         // Log in
         driver.findElement(By.id("username")).sendKeys("user");
         driver.findElement(By.id("password")).sendKeys("user");
-        driver.findElement(By.cssSelector("button")).click();
+        driver.findElement(By.cssSelector("button[type='submit']")).click();
 
-        // Assert text
-        WebElement successElement = driver.findElement(By.id("success"));
+        // Get success element
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement successElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("success")));
+
+        // Assert expected text
         assertThat(successElement.getText()).contains("Login successful");
 
         // Take screenshot
-        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(FILE);
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(FILE); // stored by default in tmp folder
         Path destination = Paths.get("helloworld-selenium.png");
         Files.move(screenshot.toPath(), destination, REPLACE_EXISTING);
     }

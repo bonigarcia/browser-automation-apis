@@ -6,12 +6,15 @@ describe('Hello World with Cypress', () => {
       // Log in
       cy.get('#username').type('user');
       cy.get('#password').type('user');
-      cy.contains('Submit').click();
+      cy.get('button[type="submit"]').click();
 
-      // Assert text
-      cy.contains('Login successful');
-	  
+      // Get success element
+      const successElement = cy.get('#success');
+
+      // Assert expected text
+      successElement.contains('Login successful');
+
       // Take screenshot
-      cy.screenshot("helloworld-cypress");
+      cy.screenshot('helloworld-cypress');
   });
 });

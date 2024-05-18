@@ -5,13 +5,16 @@ test('Hello World Playwright', async ({ page }) => {
    await page.goto('https://bonigarcia.dev/selenium-webdriver-java/login-form.html');
 
    // Log in
-   await page.fill('#username', 'user');
-   await page.fill('#password', 'user');
-   await page.click('button[type="submit"]');
+   await page.locator('#username').fill('user');
+   await page.locator('#password').fill('user');
+   await page.locator('button[type="submit"]').click()
 
-   // Assert text
-   await page.waitForSelector('#success');
-   await expect(page.locator('#success')).toHaveText('Login successful');
+   // Get success element
+   const successElement = page.locator('#success');
+   await successElement.waitFor();
+
+   // Assert expected text
+   expect(successElement).toHaveText('Login successful');
 
    // Take screenshot
    await page.screenshot({ path: 'helloworld-playwright.png' });
