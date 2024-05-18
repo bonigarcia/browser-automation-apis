@@ -7,6 +7,9 @@ on:
     paths: ['selenium/**']
   workflow_dispatch:
 
+env:
+  DISPLAY: :99
+
 jobs:
   tests:
     strategy:
@@ -25,7 +28,7 @@ jobs:
         cache: 'maven'
     - name: Start Xvfb
       if: matrix.os == 'ubuntu-latest'
-      run: Xvfb :99 &
+      run: Xvfb $DISPLAY &
     - name: Run tests
       run: |
         cd selenium
