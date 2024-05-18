@@ -2,15 +2,10 @@ name: Selenium
 
 on:
   push:
-    branches: [ main ]
     paths: ['selenium/**']
   pull_request:
-    branches: [ main ]
     paths: ['selenium/**']
   workflow_dispatch:
-
-env:
-  DISPLAY: :99
 
 jobs:
   tests:
@@ -30,8 +25,15 @@ jobs:
         cache: 'maven'
     - name: Start Xvfb
       if: matrix.os == 'ubuntu-latest'
-      run: Xvfb $DISPLAY &
+      run: Xvfb :99 &
     - name: Run tests
       run: |
         cd selenium
         mvn -B test
+    - name: Store screenshot
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: selenium-screenshot
+        path: selenium/*.png
+        retention-days: 30

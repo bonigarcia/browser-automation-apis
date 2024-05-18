@@ -2,10 +2,8 @@ name: Playwright
 
 on:
   push:
-    branches: [ main ]
     paths: ['playwright/**']
   pull_request:
-    branches: [ main ]
     paths: ['playwright/**']
   workflow_dispatch:
 
@@ -16,8 +14,10 @@ jobs:
         os: [ ubuntu-latest ]
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
+    - name: Checkout GitHub repo
+      uses: actions/checkout@v4
+    - name: Set up Node
+      uses: actions/setup-node@v4
       with:
         node-version: lts/*
     - name: Install dependencies
@@ -30,7 +30,15 @@ jobs:
       run: |
         cd playwright
         npx playwright test
-    - uses: actions/upload-artifact@v4
+    - name: Store screenshot
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: playwright-screenshot
+        path: playwright/*.png
+        retention-days: 30
+    - name: Store report
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: playwright-report

@@ -1,5 +1,6 @@
-name: Dependabot auto-merge
-on: pull_request
+name: Dependabot
+on:
+  pull_request:
 
 permissions:
   contents: write
