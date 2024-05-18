@@ -21,10 +21,10 @@ jobs:
       with:
         working-directory: cypress
         browser: chrome
-    - name: Store screenshot
+    - name: Store screenshots
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: cypress-screenshot
+        name: cypress-screenshots
         path: cypress/cypress/screenshots/**/*.png
         retention-days: 30
