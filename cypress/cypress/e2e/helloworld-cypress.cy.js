@@ -1,20 +1,9 @@
-describe('Hello World with Cypress', () => {
-   it('Login in practice site', () => {
+describe('Hello World Cypress', () => {
+   it('Open sample web page and check title', () => {
       // Open system under test (SUT)
-      cy.visit('https://bonigarcia.dev/selenium-webdriver-java/login-form.html');
-	
-      // Log in
-      cy.get('#username').type('user');
-      cy.get('#password').type('user');
-      cy.get('button[type="submit"]').click();
+      cy.visit('https://bonigarcia.dev/selenium-webdriver-java/');
 
-      // Get success element
-      const successElement = cy.get('#success');
-
-      // Assert expected text
-      successElement.contains('Login successful');
-
-      // Take screenshot
-      cy.screenshot('helloworld-cypress');
+      // Assert web page title
+      cy.title().should('include', 'Selenium WebDriver');
   });
 });
