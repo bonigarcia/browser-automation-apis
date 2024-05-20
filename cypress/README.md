@@ -3,7 +3,7 @@
 [![Twitter Follow](https://img.shields.io/twitter/follow/boni_gg.svg?style=social)](https://twitter.com/boni_gg)
 
 # Hello World Cypress
-This repository contains a basic [Cypress] test using JavaScript.
+This repository contains basic [Cypress] tests using JavaScript.
 
 ## About
 browser-automation-apis (Copyright &copy; 2024) is a project created by [Boni García], licensed under [Apache 2.0 License].
