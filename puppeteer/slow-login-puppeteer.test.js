@@ -9,9 +9,9 @@ describe('Slow login', () => {
       await page.click('button[type="submit"]');
 
       // Assert expected text
-      const successElement = await page.waitForSelector('#success', {visible: true})
+      const successElement = await page.waitForSelector('#success');
       const successElementText = await page.evaluate(successElement => successElement.textContent, successElement);
-      expect(successElementText).toContain('Login successful')
+      expect(successElementText).toContain('Login successful');
 
       // Take screenshot
       await page.screenshot({ path: 'slow-login-puppeteer.png' });

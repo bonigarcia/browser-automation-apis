@@ -11,7 +11,7 @@ describe('User login', () => {
       // Assert expected text
       const successElement = await page.$('#success');
       const successElementText = await page.evaluate(successElement => successElement.textContent, successElement);
-      expect(successElementText).toContain('Login successful')
+      expect(successElementText).toContain('Login successful');
 
       // Take screenshot
       await page.screenshot({ path: 'login-puppeteer.png' });
