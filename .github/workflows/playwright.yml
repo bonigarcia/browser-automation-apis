@@ -20,15 +20,12 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: lts/*
-    - name: Install dependencies
+    - name: Install browsers
+      run: npx playwright install --with-deps
+    - name: Install dependencies and run tests
       run: |
         cd playwright
         npm ci
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: |
-        cd playwright
         npx playwright test --project=chromium
     - name: Store screenshots
       uses: actions/upload-artifact@v4

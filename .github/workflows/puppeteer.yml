@@ -26,11 +26,11 @@ jobs:
     - name: Start Xvfb
       if: matrix.os == 'ubuntu-latest'
       run: Xvfb $DISPLAY &
-    - name: Install dependencies and run Puppeteer test
+    - name: Install dependencies and run tests
       run: |
         cd puppeteer
-        npm install
-        npm test
+        npm ci
+        npx jext
     - name: Store screenshots
       uses: actions/upload-artifact@v4
       if: always()
