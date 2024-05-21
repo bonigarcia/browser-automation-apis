@@ -54,7 +54,7 @@ class LoginSeleniumTest {
         driver.findElement(By.cssSelector("button[type='submit']")).click();
 
         // Assert expected text
-        WebElement successElement = driver.findElement(By.id("success"));
+        WebElement successElement = driver.findElement(By.id("success")); // It could be flaky
         assertThat(successElement.getText()).contains("Login successful");
 
         // Take screenshot
