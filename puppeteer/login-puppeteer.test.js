@@ -9,7 +9,8 @@ describe('User login', () => {
       await page.click('button[type="submit"]');
 
       // Assert expected text
-      const successElement = await page.$('#success'); // It can be flaky
+      // const successElement = await page.$('#success'); // It can be flaky
+	  const successElement = await page.waitForSelector('#success');
       expect(await successElement?.evaluate(el => el.textContent)).toContain('Login successful');
 
       // Take screenshot
