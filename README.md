@@ -12,7 +12,7 @@ This repository contains basic end-to-end tests using [Selenium], [Cypress], [Pu
 - [Login](https://github.com/bonigarcia/browser-automation-apis/blob/main/login.feature): Successful login with valid credentials.
 
 ## About
-browser-automation-apis (Copyright &copy; 2024) is a project created by [Boni García], licensed under [Apache 2.0 License].
+browser-automation-apis (Copyright &copy; 2024-2025) is a project created by [Boni García], licensed under [Apache 2.0 License].
 
 [Selenium]: https://www.selenium.dev/
 [Cypress]: https://www.cypress.io/
