@@ -8,6 +8,7 @@ describe('User login', () => {
        browser = await puppeteer.launch({
           browser: 'chrome',
           headless: false,
+          args: ['--no-sandbox'], // This is required to run tests in CI
        });
        page = await browser.newPage();
    });
