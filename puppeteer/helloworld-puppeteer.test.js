@@ -17,7 +17,7 @@ describe('Hello World with Puppeteer', () => {
       await browser.close();
    });
 
-   it('Open website and check page title', async () => {
+   it('Open sample web page and check title', async () => {
       // Open system under test (SUT)
       await page.goto('https://bonigarcia.dev/selenium-webdriver-java/');
 
