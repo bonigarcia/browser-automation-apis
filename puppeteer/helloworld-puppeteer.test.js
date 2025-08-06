@@ -10,7 +10,8 @@ describe('Hello World with Puppeteer', () => {
           headless: false,
           args: ['--no-sandbox'], // This is required to run tests in CI
        });
-       page = await browser.newPage();
+       const pages = await browser.pages();
+       page = pages[0]; // Use the default tab opened with the browser
    });
 
    afterAll(async () => {
