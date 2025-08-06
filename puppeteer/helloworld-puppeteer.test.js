@@ -10,15 +10,14 @@ describe('Hello World with Puppeteer', () => {
           headless: false,
           args: ['--no-sandbox'], // This is required to run tests in CI
        });
-       const pages = await browser.pages();
-       page = pages[0]; // Use the default tab opened with the browser
+       page = await browser.newPage();
    });
 
    afterAll(async () => {
       await browser.close();
    });
 
-   it('Login in practice site', async () => {
+   it('Open website and check page title', async () => {
       // Open system under test (SUT)
       await page.goto('https://bonigarcia.dev/selenium-webdriver-java/');
 
