@@ -5,13 +5,8 @@ describe('Hello World with Puppeteer', () => {
    let page;
 
    beforeAll(async () => {
-       browser = await puppeteer.launch({
-          browser: 'chrome',
-          headless: false,
-          args: ['--no-sandbox'], // This is required to run tests in CI
-       });
-       const pages = await browser.pages();
-       page = pages[0]; // Use the default tab opened with the browser
+       browser = await puppeteer.launch();
+       page = await browser.newPage();
    });
 
    afterAll(async () => {
