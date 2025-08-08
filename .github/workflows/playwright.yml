@@ -25,7 +25,7 @@ jobs:
     - name: Install dependencies and run tests
       run: |
         cd playwright
-        npm ci
+        npx playwright install
         npx playwright test --project=chromium
     - name: Store screenshots
       uses: actions/upload-artifact@v4
