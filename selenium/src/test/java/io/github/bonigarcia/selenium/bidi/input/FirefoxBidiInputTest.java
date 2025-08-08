@@ -46,13 +46,11 @@ class FirefoxBidiInputTest {
                 "https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
 
         WebElement inputText = driver.findElement(By.name("my-text"));
-
         String textValue = "Hello World!";
         Input input = new Input(driver);
         Actions actions = new Actions(driver);
         Actions sendKeys = actions.sendKeys(inputText, textValue);
         input.perform(driver.getWindowHandle(), sendKeys.getSequences());
-
         assertThat(inputText.getDomProperty("value")).isEqualTo(textValue);
 
         inputText.clear();
