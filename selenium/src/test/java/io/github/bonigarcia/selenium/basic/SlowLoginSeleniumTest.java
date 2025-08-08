@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package io.github.bonigarcia.selenium;
+package io.github.bonigarcia.selenium.basic;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -34,23 +34,21 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-class SlowLogin2SeleniumTest {
+class SlowLoginSeleniumTest {
 
     WebDriver driver;
 
     @BeforeEach
     void setup() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-search-engine-choice-screen");
-        driver = new ChromeDriver(options);
+        driver = new ChromeDriver();
     }
 
     @Test
     void test() throws Exception {
         // Open system under test (SUT)
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/login-slow.html");
 
         // Log in
@@ -59,12 +57,13 @@ class SlowLogin2SeleniumTest {
         driver.findElement(By.cssSelector("button[type='submit']")).click();
 
         // Assert expected text
-        WebElement successElement = driver.findElement(By.id("success"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement successElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("success")));
         assertThat(successElement.getText()).contains("Login successful");
 
         // Take screenshot
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(FILE); // stored by default in tmp folder
-        Path destination = Paths.get("login-selenium.png");
+        Path destination = Paths.get("slow-login-selenium.png");
         Files.move(screenshot.toPath(), destination, REPLACE_EXISTING);
     }
 

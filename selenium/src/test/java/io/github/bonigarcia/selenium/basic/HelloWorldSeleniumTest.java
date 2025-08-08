@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package io.github.bonigarcia.selenium;
+package io.github.bonigarcia.selenium.basic;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
