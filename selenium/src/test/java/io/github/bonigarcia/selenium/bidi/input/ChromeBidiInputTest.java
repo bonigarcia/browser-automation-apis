@@ -42,7 +42,7 @@ class ChromeBidiInputTest {
     }
 
     @Test
-    void test() {
+    void testInput() {
         driver.get(
                 "https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
 

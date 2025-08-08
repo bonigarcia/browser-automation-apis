@@ -27,22 +27,22 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.bidi.module.Network;
 import org.openqa.selenium.bidi.network.ResponseDetails;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
-class EdgeBidiLogTest {
+class FirefoxBidiNetworkTest {
 
     WebDriver driver;
 
     @BeforeEach
     void setup() {
-        EdgeOptions options = new EdgeOptions();
+        FirefoxOptions options = new FirefoxOptions();
         options.enableBiDi();
-        driver = new EdgeDriver(options);
+        driver = new FirefoxDriver(options);
     }
 
     @Test
-    void test() throws Exception {
+    void testNetwork() throws Exception {
         try (Network network = new Network(driver)) {
             CompletableFuture<ResponseDetails> future = new CompletableFuture<>();
             network.onResponseCompleted(future::complete);

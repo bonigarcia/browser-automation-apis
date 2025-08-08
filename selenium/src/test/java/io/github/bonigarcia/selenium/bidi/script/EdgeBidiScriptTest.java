@@ -42,7 +42,7 @@ class EdgeBidiScriptTest {
     }
 
     @Test
-    void test() {
+    void testScript() {
         String id = driver.getWindowHandle();
         try (Script script = new Script(id, driver)) {
             EvaluateResult result = script.callFunctionInBrowsingContext(id,

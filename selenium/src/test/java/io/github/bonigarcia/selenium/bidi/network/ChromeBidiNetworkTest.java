@@ -43,7 +43,7 @@ class ChromeBidiNetworkTest {
     }
 
     @Test
-    void test() throws Exception {
+    void testNetwork() throws Exception {
         try (Network network = new Network(driver)) {
             CompletableFuture<ResponseDetails> future = new CompletableFuture<>();
             network.onResponseCompleted(future::complete);

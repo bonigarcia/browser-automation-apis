@@ -43,7 +43,7 @@ class ChromeBidiLogTest {
     }
 
     @Test
-    void test() {
+    void testLog() {
         List<GenericLogEntry> logs = new ArrayList<>();
         try (LogInspector logInspector = new LogInspector(driver)) {
             logInspector.onGenericLog(logs::add);

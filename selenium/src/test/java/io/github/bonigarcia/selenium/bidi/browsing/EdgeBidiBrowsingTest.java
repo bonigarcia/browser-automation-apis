@@ -44,7 +44,7 @@ class EdgeBidiBrowsingTest {
     }
 
     @Test
-    void testScreenshot() {
+    void testBrowsing() {
         BrowsingContext context = new BrowsingContext(driver,
                 driver.getWindowHandle());
         context.navigate("https://bonigarcia.dev/selenium-webdriver-java/");
