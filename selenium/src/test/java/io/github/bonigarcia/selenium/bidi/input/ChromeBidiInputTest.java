@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package io.github.bonigarcia.selenium.bidi.action;
+package io.github.bonigarcia.selenium.bidi.input;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,19 +25,20 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.bidi.module.Input;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 
-class FirefoxBidiActionTest {
+class ChromeBidiInputTest {
 
     WebDriver driver;
 
     @BeforeEach
     void setup() {
-        FirefoxOptions options = new FirefoxOptions();
+        ChromeOptions options = new ChromeOptions();
         options.enableBiDi();
-        driver = new FirefoxDriver(options);
+        driver = new ChromeDriver(options);
+
     }
 
     @Test

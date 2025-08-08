@@ -44,7 +44,17 @@ class FirefoxBidiBrowsingTest {
     }
 
     @Test
-    void test() throws Exception {
+    void testScreenshot() {
+        BrowsingContext context = new BrowsingContext(driver,
+                driver.getWindowHandle());
+        context.navigate("https://bonigarcia.dev/selenium-webdriver-java/");
+
+        String screenshot = context.captureScreenshot(); // Base64
+        assertThat(screenshot).isNotBlank();
+    }
+
+    @Test
+    void testNavigation() throws Exception {
         try (BrowsingContextInspector inspector = new BrowsingContextInspector(
                 driver)) {
             CompletableFuture<NavigationInfo> future = new CompletableFuture<>();

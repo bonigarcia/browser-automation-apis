@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package io.github.bonigarcia.selenium.bidi.action;
+package io.github.bonigarcia.selenium.bidi.input;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,7 +29,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.interactions.Actions;
 
-class EdgeBidiActionTest {
+class EdgeBidiInputTest {
 
     WebDriver driver;
 
