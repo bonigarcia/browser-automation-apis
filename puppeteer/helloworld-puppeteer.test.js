@@ -13,10 +13,6 @@ describe('Hello World with Puppeteer', () => {
        page = await browser.newPage();
    });
 
-   afterAll(async () => {
-      await browser.close();
-   });
-
    it('Open sample web page and check title', async () => {
       // Open system under test (SUT)
       await page.goto('https://bonigarcia.dev/selenium-webdriver-java/');
@@ -25,4 +21,9 @@ describe('Hello World with Puppeteer', () => {
       const title = await page.title();
       expect(title).toContain('Selenium WebDriver');
    });
+
+   afterAll(async () => {
+      await browser.close();
+   });
+
 });

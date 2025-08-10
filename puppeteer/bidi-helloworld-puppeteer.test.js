@@ -9,13 +9,8 @@ describe('Hello World with Puppeteer and BiDi', () => {
          browser: 'firefox',
          protocol: 'webDriverBiDi',
          headless: false,
-         args: ['--no-sandbox'], // This is required to run tests in CI
       });
       page = await browser.newPage();
-   });
-
-   afterAll(async () => {
-      await browser.close();
    });
 
    it('Open sample web page and check title', async () => {
@@ -26,4 +21,9 @@ describe('Hello World with Puppeteer and BiDi', () => {
       const title = await page.title();
       expect(title).toContain('Selenium WebDriver');
    });
+
+   afterAll(async () => {
+      await browser.close();
+   });
+
 });

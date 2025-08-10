@@ -14,7 +14,6 @@ describe('Form interaction with Puppeteer and BiDi', () => {
       page = await browser.newPage();
    });
 
-
    it('Fill and submit a form', async () => {
       await page.goto('https://bonigarcia.dev/selenium-webdriver-java/web-form.html');
 

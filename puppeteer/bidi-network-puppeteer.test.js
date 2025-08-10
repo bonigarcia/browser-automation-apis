@@ -14,7 +14,6 @@ describe('Network interception with Puppeteer and BiDi', () => {
       page = await browser.newPage();
    });
 
-
    it('logs all network requests', async () => {
       const urls = [];
       page.on('request', req => urls.push(req.url()));

@@ -9,11 +9,9 @@ describe('Log gathering with Puppeteer and BiDi', () => {
          browser: 'firefox',
          protocol: 'webDriverBiDi',
          headless: false,
-         args: ['--no-sandbox'], // This is required to run tests in CI
       });
       page = await browser.newPage();
    });
-
 
    it('Capture console logs via BiDi', async () => {
       const messages = [];
