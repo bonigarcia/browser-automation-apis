@@ -30,6 +30,7 @@ jobs:
       run: |
         cd puppeteer
         npm ci
+        npx puppeteer browsers install firefox
         npx jest
     - name: Store screenshots
       uses: actions/upload-artifact@v4
