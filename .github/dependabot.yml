@@ -22,7 +22,7 @@ updates:
   open-pull-requests-limit: 99
 
 - package-ecosystem: npm
-  directory: "/playwright"
+  directory: "/playwright/javascript"
   schedule:
     interval: daily
     time: '06:00'
