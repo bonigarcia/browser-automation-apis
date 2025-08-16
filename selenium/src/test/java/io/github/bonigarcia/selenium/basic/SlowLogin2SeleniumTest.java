@@ -64,7 +64,7 @@ class SlowLogin2SeleniumTest {
 
         // Take screenshot
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(FILE); // stored by default in tmp folder
-        Path destination = Paths.get("login-selenium.png");
+        Path destination = Paths.get("slow-login2-selenium.png");
         Files.move(screenshot.toPath(), destination, REPLACE_EXISTING);
     }
 
