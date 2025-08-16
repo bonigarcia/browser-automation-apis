@@ -1,0 +1,42 @@
+name: Playwright JavaScript
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Checkout GitHub repo
+      uses: actions/checkout@v4
+    - name: Set up Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+    - name: Install dependencies and browsers
+      run: |
+        cd playwright/javascript
+        npm ci
+        npx playwright install --with-deps
+    - name: Run tests
+      run: |
+        cd playwright/javascript
+        npx playwright test --project=chromium
+    - name: Store screenshots
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: playwright-js-screenshots
+        path: playwright/javascript/*.png
+        retention-days: 30
+    - name: Store report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: playwright-js-report
+        path: playwright/javascript/playwright-report/
+        retention-days: 30
