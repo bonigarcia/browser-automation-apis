@@ -1,0 +1,39 @@
+name: Playwright Java
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+env:
+  DISPLAY: :99
+
+jobs:
+  tests:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        java: [ 17 ]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Checkout GitHub repo
+      uses: actions/checkout@v5
+    - name: Set up Java
+      uses: actions/setup-java@v4.7.1
+      with:
+        distribution: 'temurin'
+        java-version: ${{ matrix.java }}
+        cache: 'maven'
+    - name: Start Xvfb
+      if: matrix.os == 'ubuntu-latest'
+      run: Xvfb $DISPLAY &
+    - name: Run tests
+      run: |
+        cd playwright/java
+        mvn -B test
+    - name: Store screenshots
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: playwright-java-screenshots
+        path: playwright/java/*.png
+        retention-days: 30
