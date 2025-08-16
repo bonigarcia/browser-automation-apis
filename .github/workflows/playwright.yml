@@ -11,3 +11,7 @@ jobs:
   playwright-js:
     name: JavaScript
     uses: ./.github/workflows/playwright-js.yml
+
+  playwright-java:
+    name: Java
+    uses: ./.github/workflows/playwright-java.yml
