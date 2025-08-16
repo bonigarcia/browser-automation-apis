@@ -3,7 +3,7 @@
 [![Twitter Follow](https://img.shields.io/twitter/follow/boni_gg.svg?style=social)](https://twitter.com/boni_gg)
 
 # Hello World Playwright
-This repository contains basic [Playwright] tests using JavaScript.
+This repository contains basic [Playwright] tests using Java and JavaScript.
 
 ## About
 browser-automation-apis (Copyright &copy; 2024-2025) is a project created by [Boni García], licensed under [Apache 2.0 License].
