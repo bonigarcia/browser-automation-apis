@@ -18,6 +18,8 @@ package io.github.bonigarcia.playwright.basic;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.nio.file.Paths;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -29,7 +31,7 @@ import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 
-class HelloWorldPlaywrightTest {
+class LoginPlaywrightTest {
 
     static Playwright playwright;
     static Browser browser;
@@ -51,11 +53,21 @@ class HelloWorldPlaywrightTest {
     @Test
     void test() {
         // Open system under test (SUT)
-        page.navigate("https://bonigarcia.dev/selenium-webdriver-java/");
+        page.navigate(
+                "https://bonigarcia.dev/selenium-webdriver-java/login-form.html");
 
-        // Assert web page title
-        String title = page.title();
-        assertThat(title).contains("Selenium WebDriver");
+        // Log in
+        page.fill("#username", "user");
+        page.fill("#password", "user");
+        page.click("button[type='submit']");
+
+        // Assert expected text
+        String successText = page.textContent("#success");
+        assertThat(successText).contains("Login successful");
+
+        // Take screenshot
+        page.screenshot(new Page.ScreenshotOptions()
+                .setPath(Paths.get("login-playwright.png")));
     }
 
     @AfterEach
