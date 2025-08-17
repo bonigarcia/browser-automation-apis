@@ -143,3 +143,4 @@ target
 *.png
 playwright-report
 *.zip
+*.webm

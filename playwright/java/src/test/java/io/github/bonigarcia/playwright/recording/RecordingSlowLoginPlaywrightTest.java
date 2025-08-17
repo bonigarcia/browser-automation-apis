@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package io.github.bonigarcia.playwright.traces;
+package io.github.bonigarcia.playwright.recording;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,9 +31,8 @@ import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
-import com.microsoft.playwright.Tracing;
 
-class TraceSlowLoginPlaywrightTest {
+class RecordingSlowLoginPlaywrightTest {
 
     static Playwright playwright;
     static Browser browser;
@@ -49,11 +48,9 @@ class TraceSlowLoginPlaywrightTest {
 
     @BeforeEach
     void createContextAndPage() {
-        context = browser.newContext();
-
-        // Start tracing
-        context.tracing().start(new Tracing.StartOptions().setScreenshots(true)
-                .setSnapshots(true).setSources(true));
+        Browser.NewContextOptions options = new Browser.NewContextOptions()
+                .setRecordVideoDir(Paths.get("."));
+        context = browser.newContext(options);
 
         page = context.newPage();
     }
@@ -76,8 +73,6 @@ class TraceSlowLoginPlaywrightTest {
 
     @AfterEach
     void closeContext() {
-        context.tracing().stop(new Tracing.StopOptions()
-                .setPath(Paths.get("login-traces.zip")));
         context.close();
     }
 
