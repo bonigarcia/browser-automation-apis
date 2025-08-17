@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package io.github.bonigarcia.playwright.trace;
+package io.github.bonigarcia.playwright.traces;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

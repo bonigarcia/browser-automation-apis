@@ -9,9 +9,9 @@ on:
 
 jobs:
   playwright-js:
-    name: JavaScript
+    name: Playwright JavaScript
     uses: ./.github/workflows/playwright-js.yml
 
   playwright-java:
-    name: Java
+    name: Playwright Java
     uses: ./.github/workflows/playwright-java.yml
