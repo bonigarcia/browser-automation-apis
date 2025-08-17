@@ -142,3 +142,4 @@ target
 .DS_Store
 *.png
 playwright-report
+*.zip

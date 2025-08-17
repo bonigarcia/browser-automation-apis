@@ -1,5 +1,5 @@
 /*
- * (C) Copyright 2024 Boni Garcia (https://bonigarcia.github.io/)
+ * (C) Copyright 2025 Boni Garcia (https://bonigarcia.github.io/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -67,7 +67,7 @@ class SlowLoginPlaywrightTest {
 
         // Take screenshot
         page.screenshot(new Page.ScreenshotOptions()
-                .setPath(Paths.get("login-playwright.png")));
+                .setPath(Paths.get("slow-login-playwright.png")));
     }
 
     @AfterEach

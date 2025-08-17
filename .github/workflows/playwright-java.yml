@@ -37,3 +37,10 @@ jobs:
         name: playwright-java-screenshots
         path: playwright/java/*.png
         retention-days: 30
+    - name: Store traces
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: playwright-java-traces
+        path: playwright/java/*.zip
+        retention-days: 30

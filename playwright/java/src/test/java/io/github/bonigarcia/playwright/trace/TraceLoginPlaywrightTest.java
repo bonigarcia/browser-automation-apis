@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package io.github.bonigarcia.playwright.basic;
+package io.github.bonigarcia.playwright.trace;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,10 +28,12 @@ import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
+import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
+import com.microsoft.playwright.Tracing;
 
-class LoginPlaywrightTest {
+class TraceLoginPlaywrightTest {
 
     static Playwright playwright;
     static Browser browser;
@@ -41,12 +43,18 @@ class LoginPlaywrightTest {
     @BeforeAll
     static void launchBrowser() {
         playwright = Playwright.create();
-        browser = playwright.chromium().launch();
+        browser = playwright.chromium()
+                .launch(new BrowserType.LaunchOptions().setHeadless(false));
     }
 
     @BeforeEach
     void createContextAndPage() {
         context = browser.newContext();
+
+        // Start tracing
+        context.tracing().start(new Tracing.StartOptions().setScreenshots(true)
+                .setSnapshots(true).setSources(true));
+
         page = context.newPage();
     }
 
@@ -64,14 +72,12 @@ class LoginPlaywrightTest {
         // Assert expected text
         String successText = page.textContent("#success");
         assertThat(successText).contains("Login successful");
-
-        // Take screenshot
-        page.screenshot(new Page.ScreenshotOptions()
-                .setPath(Paths.get("login-playwright.png")));
     }
 
     @AfterEach
     void closeContext() {
+        context.tracing().stop(new Tracing.StopOptions()
+                .setPath(Paths.get("login-traces.zip")));
         context.close();
     }
 
