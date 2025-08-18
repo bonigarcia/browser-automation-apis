@@ -144,3 +144,4 @@ target
 playwright-report
 *.zip
 *.webm
+.allure
