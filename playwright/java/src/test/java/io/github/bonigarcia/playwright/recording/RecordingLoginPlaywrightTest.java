@@ -20,39 +20,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.nio.file.Paths;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 
 class RecordingLoginPlaywrightTest {
 
-    static Playwright playwright;
-    static Browser browser;
-    BrowserContext context;
+    Browser browser;
     Page page;
 
-    @BeforeAll
-    static void launchBrowser() {
-        playwright = Playwright.create();
-        browser = playwright.chromium()
-                .launch(new BrowserType.LaunchOptions().setHeadless(false));
-    }
-
     @BeforeEach
-    void createContextAndPage() {
+    void setup() {
+        browser = Playwright.create().chromium()
+                .launch(new BrowserType.LaunchOptions().setHeadless(false));
         Browser.NewContextOptions options = new Browser.NewContextOptions()
-                .setRecordVideoDir(Paths.get("."));
-        context = browser.newContext(options);
-
-        page = context.newPage();
+                .setRecordVideoDir(Paths.get("./target"));
+        page = browser.newContext(options).newPage();
     }
 
     @Test
@@ -72,13 +60,8 @@ class RecordingLoginPlaywrightTest {
     }
 
     @AfterEach
-    void closeContext() {
-        context.close();
-    }
-
-    @AfterAll
-    static void closeBrowser() {
-        playwright.close();
+    void teardown() {
+        browser.close();
     }
 
 }

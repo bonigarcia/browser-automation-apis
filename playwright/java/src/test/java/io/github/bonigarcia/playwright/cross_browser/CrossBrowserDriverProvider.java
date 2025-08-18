@@ -23,6 +23,8 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 
 import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.BrowserType;
+import com.microsoft.playwright.BrowserType.LaunchOptions;
 import com.microsoft.playwright.Playwright;
 
 public class CrossBrowserDriverProvider implements ArgumentsProvider {
@@ -31,8 +33,11 @@ public class CrossBrowserDriverProvider implements ArgumentsProvider {
     public Stream<? extends Arguments> provideArguments(
             ExtensionContext context) {
         Playwright playwright = Playwright.create();
-        Browser chromium = playwright.chromium().launch();
-        Browser firefox = playwright.firefox().launch();
+        LaunchOptions options = new BrowserType.LaunchOptions()
+                .setHeadless(false);
+
+        Browser chromium = playwright.chromium().launch(options);
+        Browser firefox = playwright.firefox().launch(options);
 
         return Stream.of(Arguments.of(chromium), Arguments.of(firefox));
     }

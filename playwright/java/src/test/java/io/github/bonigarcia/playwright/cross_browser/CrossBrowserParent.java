@@ -16,7 +16,6 @@
  */
 package io.github.bonigarcia.playwright.cross_browser;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.Parameter;
@@ -24,7 +23,6 @@ import org.junit.jupiter.params.ParameterizedClass;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
 import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
 
 @ParameterizedClass
@@ -34,22 +32,15 @@ class CrossBrowserParent {
     @Parameter
     static Browser browser;
 
-    BrowserContext context;
     Page page;
 
     @BeforeEach
     void createContextAndPage() {
-        context = browser.newContext();
-        page = context.newPage();
+        page = browser.newContext().newPage();
     }
 
     @AfterEach
-    void closeContext() {
-        context.close();
-    }
-
-    @AfterAll
-    static void closeBrowser() {
+    void teardown() {
         browser.close();
     }
 

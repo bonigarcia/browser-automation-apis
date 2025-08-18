@@ -18,44 +18,25 @@ package io.github.bonigarcia.playwright.traces;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.nio.file.Paths;
-
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
-import com.microsoft.playwright.Tracing;
 
 class TraceSlowLoginPlaywrightTest {
 
-    static Playwright playwright;
-    static Browser browser;
-    BrowserContext context;
+    Browser browser;
     Page page;
 
-    @BeforeAll
-    static void launchBrowser() {
-        playwright = Playwright.create();
-        browser = playwright.chromium()
-                .launch(new BrowserType.LaunchOptions().setHeadless(false));
-    }
-
     @BeforeEach
-    void createContextAndPage() {
-        context = browser.newContext();
-
-        // Start tracing
-        context.tracing().start(new Tracing.StartOptions().setScreenshots(true)
-                .setSnapshots(true).setSources(true));
-
-        page = context.newPage();
+    void setup() {
+        browser = Playwright.create().chromium()
+                .launch(new BrowserType.LaunchOptions().setHeadless(false));
+        page = browser.newContext().newPage();
     }
 
     @Test
@@ -75,15 +56,8 @@ class TraceSlowLoginPlaywrightTest {
     }
 
     @AfterEach
-    void closeContext() {
-        context.tracing().stop(new Tracing.StopOptions()
-                .setPath(Paths.get("login-traces.zip")));
-        context.close();
-    }
-
-    @AfterAll
-    static void closeBrowser() {
-        playwright.close();
+    void teardown() {
+        browser.close();
     }
 
 }
