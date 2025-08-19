@@ -49,7 +49,7 @@ class TraceLoginPlaywrightTest {
 
         page = context.newPage();
     }
-    
+
     @Test
     void test() {
         // Open system under test (SUT)
@@ -72,4 +72,5 @@ class TraceLoginPlaywrightTest {
                 .setPath(Paths.get("login-traces.zip")));
         browser.close();
     }
+
 }

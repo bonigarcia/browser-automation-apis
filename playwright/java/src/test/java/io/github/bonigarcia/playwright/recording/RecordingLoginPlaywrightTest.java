@@ -39,7 +39,7 @@ class RecordingLoginPlaywrightTest {
         browser = Playwright.create().chromium()
                 .launch(new BrowserType.LaunchOptions().setHeadless(false));
         Browser.NewContextOptions options = new Browser.NewContextOptions()
-                .setRecordVideoDir(Paths.get("./target"));
+                .setRecordVideoDir(Paths.get("."));
         page = browser.newContext(options).newPage();
     }
 
