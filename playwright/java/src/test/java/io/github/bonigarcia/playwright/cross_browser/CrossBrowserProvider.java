@@ -27,7 +27,7 @@ import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.BrowserType.LaunchOptions;
 import com.microsoft.playwright.Playwright;
 
-public class CrossBrowserDriverProvider implements ArgumentsProvider {
+public class CrossBrowserProvider implements ArgumentsProvider {
 
     @Override
     public Stream<? extends Arguments> provideArguments(

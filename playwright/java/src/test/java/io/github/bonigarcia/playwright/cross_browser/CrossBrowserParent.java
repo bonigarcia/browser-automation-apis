@@ -26,7 +26,7 @@ import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.Page;
 
 @ParameterizedClass
-@ArgumentsSource(CrossBrowserDriverProvider.class)
+@ArgumentsSource(CrossBrowserProvider.class)
 class CrossBrowserParent {
 
     @Parameter
