@@ -57,5 +57,5 @@ jobs:
       if: always()
       with:
         name: playwright-java-reports
-        path: playwright/java/target/allure-maven-plugin
+        path: playwright/java/target/site/allure-maven-plugin
         retention-days: 30

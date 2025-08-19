@@ -55,5 +55,5 @@ jobs:
       if: always()
       with:
         name: selenium-reports
-        path: selenium/target/allure-maven-plugin
+        path: selenium/target/site/allure-maven-plugin
         retention-days: 30
