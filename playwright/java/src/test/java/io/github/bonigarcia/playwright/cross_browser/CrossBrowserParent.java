@@ -30,7 +30,7 @@ import com.microsoft.playwright.Page;
 class CrossBrowserParent {
 
     @Parameter
-    static Browser browser;
+    Browser browser;
 
     Page page;
 
