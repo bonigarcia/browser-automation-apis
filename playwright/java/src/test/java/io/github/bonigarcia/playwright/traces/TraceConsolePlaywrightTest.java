@@ -18,6 +18,7 @@ package io.github.bonigarcia.playwright.traces;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,20 +27,29 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
+import com.microsoft.playwright.Tracing;
 
 class TraceConsolePlaywrightTest {
 
     Browser browser;
+    BrowserContext context;
     Page page;
 
     @BeforeEach
     void setup() {
         browser = Playwright.create().chromium()
                 .launch(new BrowserType.LaunchOptions().setHeadless(false));
-        page = browser.newContext().newPage();
+        context = browser.newContext();
+
+        // Start tracing
+        context.tracing().start(new Tracing.StartOptions().setScreenshots(true)
+                .setSnapshots(true).setSources(true));
+
+        page = context.newPage();
     }
 
     @Test
@@ -70,6 +80,8 @@ class TraceConsolePlaywrightTest {
 
     @AfterEach
     void teardown() {
+        context.tracing().stop(new Tracing.StopOptions()
+                .setPath(Paths.get("console-traces.zip")));
         browser.close();
     }
 
