@@ -30,6 +30,7 @@ jobs:
       run: |
         cd playwright/java
         mvn -B test
+        mvn allure:report
     - name: Store screenshots
       uses: actions/upload-artifact@v4
       if: always()
@@ -50,4 +51,11 @@ jobs:
       with:
         name: playwright-java-recordings
         path: playwright/java/*.webm
+        retention-days: 30
+    - name: Store reports
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: playwright-java-reports
+        path: playwright/java/target/allure-maven-plugin
         retention-days: 30
