@@ -16,9 +16,7 @@
  */
 package io.github.bonigarcia.selenium.recordings;
 
-import static java.lang.invoke.MethodHandles.lookup;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.slf4j.LoggerFactory.getLogger;
 
 import java.nio.file.Path;
 import java.time.Duration;
@@ -30,13 +28,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.Logger;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 class EdgeRecordingTest {
-
-    static final Logger log = getLogger(lookup().lookupClass());
 
     WebDriver driver;
     WebDriverManager wdm;
@@ -74,7 +69,7 @@ class EdgeRecordingTest {
         Path recordingPath = wdm.getRecordingPath();
         assertThat(recordingPath).exists();
 
-        log.debug("Recording available at {}", recordingPath);
+        System.out.println("Recording available at " + recordingPath);
     }
 
 }
