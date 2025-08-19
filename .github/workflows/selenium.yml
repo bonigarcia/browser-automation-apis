@@ -33,6 +33,7 @@ jobs:
       run: |
         cd selenium
         mvn -B test
+        mvn allure:report
     - name: Store screenshots
       uses: actions/upload-artifact@v4
       if: always()
@@ -48,4 +49,11 @@ jobs:
         path: |
           selenium/*.mp4
           selenium/*.webm
+        retention-days: 30
+    - name: Store reports
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: selenium-reports
+        path: selenium/target/allure-maven-plugin
         retention-days: 30
