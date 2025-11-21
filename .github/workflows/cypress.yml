@@ -15,7 +15,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - name: Checkout GitHub repo
-      uses: actions/checkout@v5   
+      uses: actions/checkout@v6   
     - name: Execute Cypress
       uses: cypress-io/github-action@v6
       with:
