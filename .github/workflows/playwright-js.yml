@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - name: Checkout GitHub repo
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
     - name: Set up Node
       uses: actions/setup-node@v6
       with:
