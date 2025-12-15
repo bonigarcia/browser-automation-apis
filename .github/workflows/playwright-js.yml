@@ -27,14 +27,14 @@ jobs:
         cd playwright/javascript
         npx playwright test --project=chromium
     - name: Store screenshots
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       if: always()
       with:
         name: playwright-js-screenshots
         path: playwright/javascript/*.png
         retention-days: 30
     - name: Store reports
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       if: always()
       with:
         name: playwright-js-report
