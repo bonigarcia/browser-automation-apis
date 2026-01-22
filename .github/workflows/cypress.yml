@@ -17,7 +17,7 @@ jobs:
     - name: Checkout GitHub repo
       uses: actions/checkout@v6   
     - name: Execute Cypress
-      uses: cypress-io/github-action@v6
+      uses: cypress-io/github-action@v7
       with:
         working-directory: cypress
         browser: chrome
