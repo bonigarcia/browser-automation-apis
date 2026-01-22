@@ -33,7 +33,7 @@ jobs:
         npx puppeteer browsers install firefox
         npx jest
     - name: Store screenshots
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       if: always()
       with:
         name: puppeteer-screenshots
