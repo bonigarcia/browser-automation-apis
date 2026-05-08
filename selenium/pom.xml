@@ -77,7 +77,7 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>3.0.0</version>
+                <version>3.0.1</version>
             </plugin>
         </plugins>
     </build>
